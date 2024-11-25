@@ -1,0 +1,571 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background: linear-gradient(45deg, #578d76, #345e4d, #213d32, #172421, #0f1616);
+    color: #333;
+    -webkit-tap-highlight-color: transparent;
+}
+header {
+    background: url('https://images.pexels.com/photos/1144687/pexels-photo-1144687.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center/cover;
+    color: #d4e8db;
+    text-align: center;
+    padding: 2rem 0;
+}
+#hamburger-menu {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #5ba867;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 1000;
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+#hamburger-menu:hover{
+  background: #478851;
+}
+#hamburger-menu.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.8);
+}
+
+#hamburger-menu button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  outline: none; /* Removes blue highlight */
+}
+
+/* Add glowing effect after the hamburger menu becomes visible */
+#hamburger-menu.glowing {
+  box-shadow: 0 0 15px rgba(91, 168, 103, 0.8);
+}
+
+/* Menu window styles */
+#menu-window {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: #345e4d;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#menu-window ul{
+  margin-top: 0;
+  
+  
+  list-style: none; /* Removes default list styling */
+  padding: 0; /* Removes any default padding */
+  
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS devices */
+}
+#menu-window ul li{}
+#menu-window ul li a{
+  color: white;
+  text-decoration: none;
+   
+}
+#menu-window a:hover {
+  background: rgba(0, 0, 0, 0.1); /* Slight dark background on hover */
+}
+
+#menu-window.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+nav ul {
+  margin-top: 0;
+  overflow-x: scroll; /* Enables horizontal scrolling */
+  background: #345e4d; /* Dark green to match your gradient theme */
+  list-style: none; /* Removes default list styling */
+  padding: 0; /* Removes any default padding */
+  display: flex; /* Makes the list items inline */
+  justify-content: space-around; /* Distributes the items evenly */
+  flex-wrap: nowrap; /* Prevents wrapping of items */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS devices */
+}
+
+/* Custom Scrollbar Styling */
+nav ul::-webkit-scrollbar {
+  height: 8px; /* Height for horizontal scrollbar */
+}
+
+nav ul::-webkit-scrollbar-track {
+  background: #213d32; /* A slightly darker green for track */
+}
+
+nav ul::-webkit-scrollbar-thumb {
+  background: #578d76; /* Light green for the scrollbar thumb */
+  border-radius: 10px; /* Rounded edges for the thumb */
+}
+
+nav ul::-webkit-scrollbar-thumb:hover {
+  background: #345e4d; /* Darker green when hovering */
+}
+nav ul li {
+    padding: 10px;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+section:not(#organize) {
+  padding: 20px; /* Adds padding inside the section */
+  margin: 20px; /* Adds margin around the section */
+  background-color: #d4e8db; /* Light green background to match your theme */
+  border-radius: 10px; /* Rounded corners for a smooth look */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow to create depth */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Optional: Add hover effect to sections */
+
+.gallery-container img {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+
+
+.loader {
+  position: absolute; /* Position absolutely to center it */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust to center precisely */
+  width: fit-content;
+  font-size: 40px;
+  line-height: 1.5;
+  font-family: system-ui, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #0000; /* Transparent text */
+  -webkit-text-stroke: 0.5px white; /* Black text stroke for visibility */
+  background:
+    radial-gradient(1.13em at 50% 1.6em, #2352D7 99%, #0000 101%) calc(50% - 1.6em) 0/3.2em 100% text,
+    radial-gradient(1.13em at 50% -0.8em, #0000 99%, #0096FF 101%) 50% .8em/3.2em 100% repeat-x text;
+    
+  animation: l9 2s linear infinite;
+  pointer-events: none; /* Disable pointer events (no interactions while loader is visible) */
+  user-select: none; /* Prevent text selection */
+  touch-action: none; /* Disable touch interactions */
+}
+
+/* Loader text content */
+.loader:before {
+  content: "Loading"; /* Text displayed while loading */
+  
+}
+
+/* Animation for loader */
+@keyframes l9 {
+  to {
+    background-position: calc(50% + 1.6em) 0, calc(50% + 3.2em) .8em;
+  }
+}
+
+
+
+.loaderbg {
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #578d76, #345e4d, #213d32, #172421, #0f1616);
+  
+  pointer-events: none; /* Disable interactions with background */
+}
+.likk{
+  text-align: center;
+  color: #BBBBBB;
+  font-size: 16px;
+}
+/* Organize Section */
+#organize {
+    background-color: #f4f8f5; /* Light green background */
+    padding: 20px;
+    margin: 30px 0;
+    border-radius: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#organize h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#organize p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+#organize h3 {
+    font-size: 1.5rem;
+    color: #444;
+    margin-top: 20px;
+}
+
+/* Steps List Styling */
+#organize ol {
+    padding-left: 20px;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+#organize ol li {
+    margin-bottom: 10px;
+}
+
+/* Form Styling */
+#cleanup-form {
+    max-width: 600px; /* Set a maximum width for the form */
+    margin: 20px auto; /* Center the form horizontally */
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    gap: 15px;
+}
+
+#cleanup-form label {
+    font-weight: bold;
+    color: #333;
+    font-size: 1rem;
+}
+
+#cleanup-form input,
+#cleanup-form textarea {
+    width: auto; /* Ensure input fields take the full width */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+}
+
+#cleanup-form input[type="text"],
+#cleanup-form input[type="email"],
+#cleanup-form input[type="date"],
+#cleanup-form input[type="number"] {
+    height: 40px;
+}
+
+#cleanup-form textarea {
+    height: 120px;
+    resize: vertical; /* Allow users to resize the textarea */
+}
+
+#cleanup-form button {
+    padding: 12px 25px;
+    background-color: #578d76; /* Green color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#cleanup-form button:hover {
+    background-color: #345e4d; /* Darker shade on hover */
+}
+
+#cleanup-form input:focus,
+#cleanup-form textarea:focus {
+    border-color: #578d76; /* Highlight the input fields with green on focus */
+    outline: none;
+}
+/* Change font for placeholder text */
+#cleanup-form input::placeholder,
+#cleanup-form textarea::placeholder {
+    font-family: 'Arial', sans-serif; /* Change to your desired font */
+    font-style: italic; /* Optional: Make the placeholder text italic */
+    font-weight: normal; /* Optional: Adjust the font weight */
+    color: #888; /* Optional: Change the color of the placeholder */
+}
+/* Style the input field */
+
+/* Adding the icon inside the input field */
+#name:before {
+    content: "\f007"; /* Unicode for user icon */
+    font-family: 'Font Awesome 5 Free'; /* Font Awesome font family */
+    font-weight: 900; /* To ensure the icon is visible */
+    margin-right: 5px;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #578d76; /* Icon color */
+}
+#email:before {
+    content: "\f0e0"; /* Unicode for user icon */
+    font-family: 'Font Awesome 5 Free'; /* Font Awesome font family */
+    font-weight: 900; /* To ensure the icon is visible */
+    margin-right: 5px;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #578d76; /* Icon color */
+}
+#location:before {
+    content: "\f59f"; /* Unicode for user icon */
+    font-family: 'Font Awesome 5 Free'; /* Font Awesome font family */
+    font-weight: 900; /* To ensure the icon is visible */
+    margin-right: 5px;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #578d76; /* Icon color */
+}
+#date:before {
+    content: "\f073"; /* Unicode for user icon */
+    font-family: 'Font Awesome 5 Free'; /* Font Awesome font family */
+    font-weight: 900; /* To ensure the icon is visible */
+    margin-right: 5px;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #578d76; /* Icon color */
+}
+#volunteers:before {
+    content: "\f0c0"; /* Unicode for user icon */
+    font-family: 'Font Awesome 5 Free'; /* Font Awesome font family */
+    font-weight: 900; /* To ensure the icon is visible */
+    margin-right: 5px;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #578d76; /* Icon color */
+}
+#message:before {
+    content: "\f27a"; /* Unicode for user icon */
+    font-family: 'Font Awesome 5 Free'; /* Font Awesome font family */
+    font-weight: 900; /* To ensure the icon is visible */
+    margin-right: 5px;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #578d76; /* Icon color */
+}
+/* Styling for the Members Section */
+#members {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #f4f8f5; /* Light green background for consistency */
+}
+
+#members h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #345e4d;
+}
+
+#members p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+/* Style for each member card */
+.member-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 800px;
+    margin: 10px auto;
+}
+
+.member-image {
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.member-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #578d76; /* Green border to match theme */
+}
+
+.member-info {
+    text-align: left;
+}
+
+.member-info h3 {
+    font-size: 1.8rem;
+    color: #345e4d;
+    margin: 10px 0;
+}
+
+.member-info p {
+    font-size: 1.1rem;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.member-socials a {
+    font-size: 1.2rem;
+    margin-right: 15px;
+    color: #345e4d;
+    transition: color 0.3s ease;
+}
+
+.member-socials a:hover {
+    color: #578d76;
+}
+
+/* Optional: Add a hover effect to the cards */
+.stat-item h3 {
+    font-size: 2.5rem;
+    color: #345e4d;
+    font-weight: bold;
+}
+
+.stat-item p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 5px;
+}
+#about{text-align:center;}
+#get-involved {
+    padding: 40px;
+    background-color: #f4f8f5;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#get-involved h2 {
+    font-size: 2rem;
+    color: #345e4d;
+    margin-bottom: 20px;
+}
+
+#get-involved p {
+    font-size: 1rem;
+    color: #213d32;
+    margin-bottom: 40px;
+}
+
+.get-involved-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+form {
+    flex: 1 1 300px;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+form h3 {
+    font-size: 1.5rem;
+    color: #345e4d;
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    font-size: 1rem;
+    color: #213d32;
+    margin-bottom: 5px;
+}
+
+form input, form textarea {
+    width: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+form button {
+    background: #345e4d;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+form button:hover {
+    background: #578d76;
+}
+
+.donation, .organize-event {
+    flex: 1 1 300px;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.donation h3, .organize-event h3 {
+    font-size: 1.5rem;
+    color: #345e4d;
+    margin-bottom: 10px;
+}
+
+.donation p, .organize-event p {
+    font-size: 1rem;
+    color: #213d32;
+    margin-bottom: 20px;
+}
+
+.donate-button, .organize-button {
+    background: #345e4d;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.donate-button:hover, .organize-button:hover {
+    background: #578d76;
+}
