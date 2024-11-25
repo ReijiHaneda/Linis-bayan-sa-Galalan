@@ -5,7 +5,7 @@ const assets = [
     './index.html',
     './styles.css',
     './script.js',
-    'https://via.placeholder.com/1920x1080',
+    'https://i.imgur.com/vVyWxv5.jpeg','https://i.imgur.com/iL9hHdp.jpeg','https://i.imgur.com/W9ajPKO.jpeg',
     'https://images.pexels.com/photos/1144687/pexels-photo-1144687.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     'https://via.placeholder.com/300','https://i.imgur.com/0Eim0Ss.jpeg','https://i.imgur.com/VEYKNK1.jpeg','https://i.imgur.com/k5Xef0T.jpeg','https://i.imgur.com/oJvgNCQ.jpeg','https://i.imgur.com/yi2W2Qd.jpeg'
 ];
