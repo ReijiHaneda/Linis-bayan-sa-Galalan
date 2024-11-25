@@ -3,7 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const loader = document.getElementById('loaderbg');
     console.log('website fully loaded!')
     
-        loader.style.display = 'none';
+        setTimeout(() => {
+    loader.style.display = 'none';
+}, 2000); 
 
 
     if ('serviceWorker' in navigator) {
